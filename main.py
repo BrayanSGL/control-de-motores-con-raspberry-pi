@@ -24,7 +24,10 @@ OPTIONS = [
 		'text': 'Iniciar'
 	}
 ]
-selected = 0;
+selected = 0
+numero = ''
+valor = 0
+menu = ''
 
 # Funcion para mostrar el menu con Scroll
 def mostrar_menu(is_going_down):
@@ -40,6 +43,8 @@ def mostrar_menu(is_going_down):
 # Función principal del juego
 def main():
 	global selected
+	global numero
+	global menu
 	# Se inicializa el juego
 	pygame.init()
 	pygame.display.set_caption("Título del juego")
@@ -66,7 +71,28 @@ def main():
 				elif event.key == pygame.K_UP and 0<selected:
 					selected-=1
 					mostrar_menu(0)
-			
+				#Pasamos a los números
+				if menu != '':
+					if event.key == pygame.K_1:
+						numero = '1'
+					if event.key == pygame.K_2:
+						numero = '2'
+					if event.key == pygame.K_3:
+						numero = '3'
+					if event.key == pygame.K_4:
+						numero = '4'
+					if event.key == pygame.K_5:
+						numero = '5'
+					if event.key == pygame.K_6:
+						numero = '6'
+					if event.key == pygame.K_7:
+						numero = '7'
+					if event.key == pygame.K_8:
+						numero = '8'
+					if event.key == pygame.K_9:
+						numero = '9'
+					if event.key == pygame.K_10:
+						numero = '0';
 			
 
     # 3.- Se actualiza la pantalla
