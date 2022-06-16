@@ -1,7 +1,6 @@
 import I2C_LCD_driver
 import random, pygame, sys
 from pygame.locals import *
-import menus
 
 # Declaración de constantes y variables
 WHITE = (255, 255, 255)
