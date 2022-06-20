@@ -13,15 +13,6 @@ valor = 0
 menu = ''
 speed = 0
 
-
-def pantalla_velocidad(value):
-    global speed
-    mylcd.lcd_clear()
-    mylcd.lcd_display_string('Ingrese la', 1, 3)
-    mylcd.lcd_display_string('velocidad -> '+str(value)+'%', 2)
-    speed = value
-
-
 # Función principal del juego
 def main():
     menu = 'Home'
