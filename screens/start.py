@@ -23,7 +23,7 @@ class Start():
         self.my_lcd.lcd_clear()
         self.my_lcd.lcd_display_string('Corriendo...', 1)
         while self.laps > 0:
-            self.my_lcd.lcd_display_string('Quedan: {laps}', 2)
+            self.my_lcd.lcd_display_string(f'Quedan: {self.laps}', 2)
             if self.direction == 1:
                 GPIO.output(self.IN1, GPIO.HIGH)
                 GPIO.output(self.IN2, GPIO.LOW)
