@@ -1,6 +1,8 @@
 import I2C_LCD_driver
 import random, pygame, sys, time
 from pygame.locals import *
+#Views
+from screens.home import Home
 
 # Declaración de constantes y variables
 WHITE = (255, 255, 255)
@@ -59,8 +61,8 @@ def pantalla_velocidad(value):
 def main():
 	global selected
 	global numero
-	global menu
 	global speed
+	menu = 'Home'
 	numeroVel='0'
 	# Se inicializa el juego
 	pygame.init()
@@ -72,8 +74,10 @@ def main():
 	while True:
 
 		# 1.- Se dibuja la pantalla
-		screen.fill(WHITE)
-
+		#screen.fill(WHITE)
+		if menu == 'Home':
+			home = Home()
+		"""
 		# 2.- Se comprueban los eventos
 		for event in pygame.event.get():
 			if event.type == QUIT:
@@ -130,7 +134,7 @@ def main():
 							mostrar_menu(0)
 							
 						
-
+		"""
     # 3.- Se actualiza la pantalla
 		pygame.display.update()
 
