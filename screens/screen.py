@@ -18,10 +18,10 @@ class Screen():
                 self.handle_events(event)
 
             pygame.display.update()
-        return self.input_value
 
     def show(self):
         self.__screen()
+        return self.input_value
 
     def handle_events(self, event):
         if event.type == QUIT:
