@@ -21,8 +21,8 @@ class Start():
         GPIO.setup(self.PWM, GPIO.OUT)
         GPIO.setup(self.PULSE, GPIO.IN)
         pwm=GPIO.PWM(self.PWM,50)
-        pwm.start(0)
-        pwm.ChangeDutyCycle(self.speed)
+        pwm.start(100)
+        # pwm.ChangeDutyCycle(self.speed)
 
 
     def run(self):
@@ -38,7 +38,7 @@ class Start():
                 GPIO.output(self.IN1, GPIO.LOW)
                 GPIO.output(self.IN2, GPIO.HIGH)
             self.laps -= 1
-            #SIMULACION DEL ENCODER
+            #Simulacion de encoder
             time.sleep(2)
         
         GPIO.output(self.IN1, GPIO.LOW)
