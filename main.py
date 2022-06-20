@@ -11,7 +11,7 @@ mylcd = I2C_LCD_driver.lcd()
 numero = ''
 valor = 0
 menu = ''
-speed = 0
+speed_val = 0
 
 # Función principal del juego
 
@@ -29,12 +29,12 @@ def main():
         # 1.- Se dibuja la pantalla
         # screen.fill(WHITE)
         if menu == 'Home':
-            home = Home(screen, mylcd)
+            home = Home(screen, mylcd,speed_val)
             menu = home.show_screen()
         elif menu == 'Speed':
             speed = Speed(screen, mylcd)
-            result = speed.show()
-            print(result)
+            speed_val = speed.show()
+            
             menu = 'Home'
 
     # Este fichero es el que ejecuta el juego principal
