@@ -28,7 +28,7 @@ class Screen():
             pygame.quit()
             sys.exit(0)
 
-    def __get_numbers(self, event):
+    def get_numbers(self, event):
         if event.key == pygame.K_1:
             return '1'
 

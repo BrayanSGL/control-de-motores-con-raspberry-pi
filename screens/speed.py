@@ -15,4 +15,4 @@ class Speed(Screen):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 self.is_running = False
-            self.input_value += self.__get_numbers()
+            self.input_value += self.get_numbers()
