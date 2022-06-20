@@ -23,6 +23,7 @@ def main():
     pygame.init()
     pygame.display.set_caption("Cuarta Entrega")
     screen = pygame.display.set_mode((480, 360))
+    start = Start(mylcd)
 
     # Bucle principal
     while True:
@@ -43,8 +44,7 @@ def main():
             laps_val = laps.show()
             menu = 'Home'
         elif menu == 'Start':
-            start = Start(speed_val,direction_val,laps_val, mylcd)
-            start.run()
+            start.run(speed_val, direction_val, laps_val)
             menu = 'Home'
 
     # Este fichero es el que ejecuta el juego principal

@@ -5,10 +5,7 @@ import time
 
 
 class Start():
-    def __init__(self, speed, direction, laps, mylcd) -> None:
-        self.speed = speed
-        self.direction = direction
-        self.laps = laps
+    def __init__(self, mylcd) -> None:
         self.TIME_FOR_SLEEP = 0.5
         self.IN1 = 11
         self.IN2 = 13
@@ -26,7 +23,10 @@ class Start():
         self.pwm.start(0)
 
 
-    def run(self):
+    def run(self, speed, direction, laps):
+        self.speed = speed
+        self.direction = direction
+        self.laps = laps
         self.my_lcd.lcd_clear()
         self.my_lcd.lcd_display_string('Corriendo...', 1)
         
