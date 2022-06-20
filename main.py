@@ -1,11 +1,9 @@
 import I2C_LCD_driver
-import random
 import pygame
-import sys
-import time
 from pygame.locals import *
 # Views
 from screens.home import Home
+from screens.speed import Speed
 
 # Declaración de constantes y variables
 WHITE = (255, 255, 255)
@@ -13,16 +11,8 @@ mylcd = I2C_LCD_driver.lcd()
 numero = ''
 valor = 0
 menu = ''
-
 speed = 0
 
-# Funcion para mostrar el menu con Scroll
-
-
-# Pantallas del menu
-# def pantalla_error():
-
-# def pantalla_pausa():
 
 def pantalla_velocidad(value):
     global speed
@@ -34,11 +24,7 @@ def pantalla_velocidad(value):
 
 # Función principal del juego
 def main():
-    global selected
-    global numero
-    global speed
     menu = 'Home'
-    numeroVel = '0'
     # Se inicializa el juego
     pygame.init()
     pygame.display.set_caption("Cuarta Entrega")
@@ -51,10 +37,13 @@ def main():
         # screen.fill(WHITE)
         if menu == 'Home':
             home = Home(screen, mylcd)
-            home.show_screen()
+            menu = home.show_screen()
+        elif menu == 'Speed':
+            speed = Speed(screen, mylcd)
+            speed.show_screen()
 
 
-# Este fichero es el que ejecuta el juego principal
+    # Este fichero es el que ejecuta el juego principal
 if __name__ == '__main__':
 
     main()
