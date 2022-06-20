@@ -5,22 +5,22 @@ from pygame.locals import *
 
 
 class Home():
-    def __init__(self, screen, mylcd, speed, direction) -> None:
+    def __init__(self, screen, mylcd, speed, direction, laps) -> None:
         self.is_running = True
         self.screen = screen
         self.my_lcd = mylcd
         self.OPTIONS = [
             {
                 'option': 'Speed',
-                'text': f'Velocidad:{speed}'
+                'text': f'Velocidad:{speed}%'
             },
             {
                 'option': 'Direction',
                 'text': f'Sentido:{direction}'
             },
             {
-                'option': 3,
-                'text': 'Vueltas'
+                'option': 'Laps',
+                'text': f'Vueltas:{laps}'
             },
             {
                 'option': 4,

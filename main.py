@@ -6,6 +6,7 @@ from screens.direction import Direction
 from screens.home import Home
 from screens.speed import Speed
 from screens.direction import Direction
+from screens.laps import Laps
 
 # Declaración de constantes y variables
 WHITE = (255, 255, 255)
@@ -20,6 +21,8 @@ menu = ''
 def main():
     speed_val = 0
     direction_val = 1
+    laps_val = 0
+
     menu = 'Home'
     # Se inicializa el juego
     pygame.init()
@@ -32,7 +35,7 @@ def main():
         # 1.- Se dibuja la pantalla
         # screen.fill(WHITE)
         if menu == 'Home':
-            home = Home(screen, mylcd, speed_val, direction_val)
+            home = Home(screen, mylcd, speed_val, direction_val, laps_val)
             menu = home.show_screen()
         elif menu == 'Speed':
             speed = Speed(screen, mylcd)
@@ -41,6 +44,10 @@ def main():
         elif menu == 'Direction':
             direction = Direction(screen, mylcd)
             direction_val = direction.show()
+            menu = 'Home'
+        elif menu == 'Laps':
+            laps = Laps(screen, mylcd)
+            laps_val = laps.show()
             menu = 'Home'
 
     # Este fichero es el que ejecuta el juego principal
