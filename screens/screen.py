@@ -21,7 +21,7 @@ class Screen():
 
     def show(self):
         self.__screen()
-        return self.input_value
+        return int(self.input_value)
 
     def handle_events(self, event):
         if event.type == QUIT:

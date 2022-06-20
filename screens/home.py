@@ -5,7 +5,7 @@ from pygame.locals import *
 
 
 class Home():
-    def __init__(self, screen, mylcd,speed) -> None:
+    def __init__(self, screen, mylcd, speed, direction) -> None:
         self.is_running = True
         self.screen = screen
         self.my_lcd = mylcd
@@ -15,8 +15,8 @@ class Home():
                 'text': f'Velocidad:{speed}'
             },
             {
-                'option': 2,
-                'text': 'Sentido'
+                'option': 'Direction',
+                'text': f'Sentido:{direction}'
             },
             {
                 'option': 3,
@@ -59,5 +59,5 @@ class Home():
                     elif event.key == pygame.K_RETURN:
                         self.is_running = False
             pygame.display.update()
-        
+
         return self.OPTIONS[self.selected].get('option')
