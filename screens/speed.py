@@ -15,4 +15,6 @@ class Speed(Screen):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RETURN:
                 self.is_running = False
-            self.input_value += self.get_numbers()
+            self.input_value += self.get_numbers(event)
+        
+            self.my_lcd.lcd_display_string(self.input_value, 1,13)
