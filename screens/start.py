@@ -13,19 +13,17 @@ class Start():
         self.PULSE = 21
         self.my_lcd = mylcd
 
-        
-        self.pwm=GPIO.PWM(self.PWM,1000)
-        self.pwm.start(0)
-
-
-    def run(self, speed, direction, laps):
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.IN1, GPIO.OUT)
         GPIO.setup(self.IN2, GPIO.OUT)
         GPIO.setup(self.PWM, GPIO.OUT)
         GPIO.setup(self.PULSE, GPIO.IN)
         GPIO.setwarnings(False)	
+        self.pwm=GPIO.PWM(self.PWM,1000)
+        self.pwm.start(0)
 
+
+    def run(self, speed, direction, laps):
         self.speed = speed
         self.direction = direction
         self.laps = laps
@@ -48,4 +46,3 @@ class Start():
         self.pwm.ChangeDutyCycle(0)
         GPIO.output(self.IN1, GPIO.LOW)
         GPIO.output(self.IN2, GPIO.LOW)
-        GPIO.cleanup()
