@@ -33,7 +33,9 @@ def main():
             menu = home.show_screen()
         elif menu == 'Speed':
             speed = Speed(screen, mylcd)
-            speed.show()
+            result = speed.show()
+            print(result)
+            menu = 'Home'
 
     # Este fichero es el que ejecuta el juego principal
 if __name__ == '__main__':
