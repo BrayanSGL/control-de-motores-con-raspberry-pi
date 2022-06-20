@@ -57,3 +57,4 @@ class Home():
                         self.selected -= 1
                         self.__show_menu(0)
                     # Enter
+            pygame.display.update()

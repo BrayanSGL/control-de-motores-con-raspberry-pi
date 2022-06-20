@@ -51,8 +51,7 @@ def main():
         # screen.fill(WHITE)
         if menu == 'Home':
             home = Home(screen, mylcd)
-    # 3.- Se actualiza la pantalla
-        pygame.display.update()
+            home.show_screen()
 
 
 # Este fichero es el que ejecuta el juego principal
