@@ -20,9 +20,8 @@ class Start():
         GPIO.setup(self.IN2, GPIO.OUT)
         GPIO.setup(self.PWM, GPIO.OUT)
         GPIO.setup(self.PULSE, GPIO.IN)
-        pwm=GPIO.PWM(self.PWM,50)
-        pwm.start(100)
-        # pwm.ChangeDutyCycle(self.speed)
+        self.pwm=GPIO.PWM(self.PWM,50)
+        self.pwm.start(0)
 
 
     def run(self):
@@ -30,6 +29,7 @@ class Start():
         self.my_lcd.lcd_display_string('Corriendo...', 1)
         
         while self.laps > 0:
+            self.pwm.ChangeDutyCycle(self.speed)
             self.my_lcd.lcd_display_string(f'Quedan: {self.laps}', 2)
             if self.direction == 1:
                 GPIO.output(self.IN1, GPIO.HIGH)
@@ -40,6 +40,6 @@ class Start():
             self.laps -= 1
             #Simulacion de encoder
             time.sleep(2)
-        
+        self.pwm.ChangeDutyCycle(0)
         GPIO.output(self.IN1, GPIO.LOW)
         GPIO.output(self.IN2, GPIO.LOW)
