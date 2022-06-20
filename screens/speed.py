@@ -19,10 +19,11 @@ class Speed(Screen):
                 else:
                     self.input_value = ''
 
-            elif event.key == pygame.K_DELETE:
+            elif event.key == pygame.K_BACKSPACE:
                 self.input_value.pop()
 
             else:
                 self.input_value += self.get_numbers(event)
 
+            self.my_lcd.lcd_display_string('   ', 1, 13)
             self.my_lcd.lcd_display_string(self.input_value, 1, 13)
