@@ -27,3 +27,6 @@ class Start():
                 GPIO.output(self.IN2, GPIO.HIGH)
             self.laps -= 1
             time.sleep(2)
+        
+        GPIO.output(self.IN1, GPIO.LOW)
+        GPIO.output(self.IN2, GPIO.LOW)
