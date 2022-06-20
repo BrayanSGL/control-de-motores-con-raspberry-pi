@@ -76,7 +76,7 @@ def main():
 		# 1.- Se dibuja la pantalla
 		#screen.fill(WHITE)
 		if menu == 'Home':
-			home = Home()
+			home = Home(screen,mylcd)
 		"""
 		# 2.- Se comprueban los eventos
 		for event in pygame.event.get():
