@@ -26,5 +26,5 @@ class Laps(Screen):
                     return
                 self.input_value += self.get_numbers(event)
 
-            self.my_lcd.lcd_display_string('  ', 1, 14)
-            self.my_lcd.lcd_display_string(self.input_value, 1, 14)
+            self.my_lcd.lcd_display_string('   ', 1, 13)
+            self.my_lcd.lcd_display_string(self.input_value, 1, 13)

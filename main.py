@@ -1,23 +1,18 @@
 import I2C_LCD_driver
 import pygame
 from pygame.locals import *
-from screens.direction import Direction
 # Views
 from screens.home import Home
 from screens.speed import Speed
 from screens.direction import Direction
 from screens.laps import Laps
+from screens.start import Start
 
 # Declaración de constantes y variables
-WHITE = (255, 255, 255)
 mylcd = I2C_LCD_driver.lcd()
-numero = ''
-valor = 0
-menu = ''
+
 
 # Función principal del juego
-
-
 def main():
     speed_val = 0
     direction_val = 1
@@ -32,8 +27,6 @@ def main():
     # Bucle principal
     while True:
 
-        # 1.- Se dibuja la pantalla
-        # screen.fill(WHITE)
         if menu == 'Home':
             home = Home(screen, mylcd, speed_val, direction_val, laps_val)
             menu = home.show_screen()
@@ -48,6 +41,10 @@ def main():
         elif menu == 'Laps':
             laps = Laps(screen, mylcd)
             laps_val = laps.show()
+            menu = 'Home'
+        elif menu == 'Start':
+            start = Start(speed_val,direction_val,laps_val)
+            start.run()
             menu = 'Home'
 
     # Este fichero es el que ejecuta el juego principal

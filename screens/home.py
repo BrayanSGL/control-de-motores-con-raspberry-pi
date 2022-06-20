@@ -23,7 +23,7 @@ class Home():
                 'text': f'Vueltas:{laps}'
             },
             {
-                'option': 4,
+                'option': 'Start',
                 'text': 'Iniciar'
             }
         ]
