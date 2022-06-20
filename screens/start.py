@@ -46,3 +46,4 @@ class Start():
         self.pwm.ChangeDutyCycle(0)
         GPIO.output(self.IN1, GPIO.LOW)
         GPIO.output(self.IN2, GPIO.LOW)
+        GPIO.cleanup()
