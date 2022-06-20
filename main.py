@@ -43,7 +43,7 @@ def main():
             laps_val = laps.show()
             menu = 'Home'
         elif menu == 'Start':
-            start = Start(speed_val,direction_val,laps_val)
+            start = Start(speed_val,direction_val,laps_val, mylcd)
             start.run()
             menu = 'Home'
 

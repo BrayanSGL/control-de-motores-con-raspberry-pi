@@ -3,7 +3,7 @@ import time
 
 
 class Start():
-    def __init__(self, speed, direction, laps) -> None:
+    def __init__(self, speed, direction, laps, mylcd) -> None:
         self.speed = speed
         self.direction = direction
         self.laps = laps
@@ -11,14 +11,19 @@ class Start():
         self.IN1 = 11
         self.IN2 = 13
         self.PWM = 18
+        self.my_lcd = mylcd
 
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.IN1, GPIO.OUT)
         GPIO.setup(self.IN2, GPIO.OUT)
         GPIO.setup(self.PWM, GPIO.OUT)
 
+
     def run(self):
+        self.my_lcd.lcd_clear()
+        self.my_lcd.lcd_display_string('Corriendo...', 1)
         while self.laps > 0:
+            self.my_lcd.lcd_display_string('Quedan: {laps}', 2)
             if self.direction == 1:
                 GPIO.output(self.IN1, GPIO.HIGH)
                 GPIO.output(self.IN2, GPIO.LOW)
