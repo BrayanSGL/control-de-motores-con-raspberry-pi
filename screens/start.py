@@ -1,3 +1,4 @@
+from sre_constants import IN
 import RPi.GPIO as GPIO
 import time
 
@@ -11,17 +12,23 @@ class Start():
         self.IN1 = 11
         self.IN2 = 13
         self.PWM = 18
+        self.PULSE = 21
         self.my_lcd = mylcd
 
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.IN1, GPIO.OUT)
         GPIO.setup(self.IN2, GPIO.OUT)
         GPIO.setup(self.PWM, GPIO.OUT)
+        GPIO.setup(self.PULSE, GPIO.IN)
+        pwm=GPIO.PWM(self.PWM,50)
+        pwm.start(0)
+        pwm.ChangeDutyCycle(self.speed/100)
 
 
     def run(self):
         self.my_lcd.lcd_clear()
         self.my_lcd.lcd_display_string('Corriendo...', 1)
+        
         while self.laps > 0:
             self.my_lcd.lcd_display_string(f'Quedan: {self.laps}', 2)
             if self.direction == 1:
@@ -31,6 +38,7 @@ class Start():
                 GPIO.output(self.IN1, GPIO.LOW)
                 GPIO.output(self.IN2, GPIO.HIGH)
             self.laps -= 1
+            #SIMULACION DEL ENCODER
             time.sleep(2)
         
         GPIO.output(self.IN1, GPIO.LOW)
