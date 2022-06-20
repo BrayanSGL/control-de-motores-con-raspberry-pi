@@ -22,7 +22,7 @@ class Start():
         GPIO.setup(self.PULSE, GPIO.IN)
         pwm=GPIO.PWM(self.PWM,50)
         pwm.start(0)
-        pwm.ChangeDutyCycle(self.speed/100)
+        pwm.ChangeDutyCycle(self.speed)
 
 
     def run(self):
