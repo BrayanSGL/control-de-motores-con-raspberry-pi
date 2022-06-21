@@ -27,7 +27,6 @@ def main():
 
     # Bucle principal
     while True:
-
         if menu == 'Home':
             home = Home(screen, mylcd, speed_val, direction_val, laps_val)
             menu = home.show_screen()
