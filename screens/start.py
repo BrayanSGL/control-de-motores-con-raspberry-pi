@@ -27,7 +27,7 @@ class Start():
         self.direction = direction
         self.laps = laps
         self.my_lcd.lcd_clear()
-        pulse= Button(self.PULSE)
+        pulse= Button(12)
 
         while self.laps > 0:
             if pulse.is_pressed():
