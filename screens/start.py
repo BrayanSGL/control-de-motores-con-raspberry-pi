@@ -30,7 +30,12 @@ class Start():
             if GPIO.input(self.PULSE):
                 self.my_lcd.lcd_display_string('PAUSA', 1)
                 print('En pausa')
-                time.sleep(5)
+                GPIO.output(self.IN1, GPIO.LOW)
+                GPIO.output(self.IN2, GPIO.LOW)
+                for i in range(5,0):
+                    self.my_lcd.lcd_display_string(f'Quedan: {i}  ', 2)
+                    time.sleep(1)
+
             else:
                 self.my_lcd.lcd_display_string('Corriendo...    ', 1)
                 if self.speed == 10:
