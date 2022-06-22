@@ -68,6 +68,7 @@ class Start():
                     print(count)
                     if count == 20:
                         self.laps -= 1
+                        count = 0
                         
                 #time.sleep(2)
 
