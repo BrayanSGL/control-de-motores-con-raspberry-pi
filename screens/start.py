@@ -63,7 +63,7 @@ class Start():
                     GPIO.output(self.IN2, GPIO.HIGH)
                 #self.laps -= 1
                 # ENCODER
-                if GPIO.input(self.ENCODER):
+                if not GPIO.input(self.ENCODER):
                     count+=1
                     print(count)
                     if count == 20:
