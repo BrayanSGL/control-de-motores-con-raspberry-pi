@@ -22,7 +22,8 @@ class Speed(Screen):
                 self.input_value = self.input_value[:-1]
 
             else:
-                if len(self.input_value)==3: return
+                if len(self.input_value) == 3:
+                    return
                 self.input_value += self.get_numbers(event)
 
             self.my_lcd.lcd_display_string('   ', 1, 12)
