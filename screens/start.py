@@ -33,12 +33,12 @@ class Start():
             
             
             if bandera:
-                self.my_lcd.lcd_display_string('PAUSA', 1)
+                self.my_lcd.lcd_display_string('PAUSA          ', 1)
                 print('En pausa')
                 GPIO.output(self.IN1, GPIO.LOW)
                 GPIO.output(self.IN2, GPIO.LOW)
-                for i in range(5,0):
-                    self.my_lcd.lcd_display_string(f'Quedan: {i}  ', 2)
+                for i in range(5,0,-1):
+                    self.my_lcd.lcd_display_string(f'Faltan: {i}  ', 2)
                     time.sleep(1)
                 bandera = False
 
