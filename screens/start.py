@@ -28,6 +28,10 @@ class Start():
 
         while self.laps > 0:
             if GPIO.input(self.PULSE):
+                self.my_lcd.lcd_display_string('PAUSA', 1)
+                print('En pausa')
+                time.sleep(5)
+            else:
                 self.my_lcd.lcd_display_string('Corriendo...    ', 1)
                 if self.speed == 10:
                     self.pwm.ChangeDutyCycle(50)
@@ -45,10 +49,6 @@ class Start():
                 self.laps -= 1
                 # Simulacion de encoder
                 time.sleep(2)
-            else:
-                self.my_lcd.lcd_display_string('PAUSA', 1)
-                print('En pausa')
-                time.sleep(5)
 
         self.pwm.ChangeDutyCycle(0)
         GPIO.output(self.IN1, GPIO.LOW)
