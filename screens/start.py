@@ -1,3 +1,4 @@
+from itertools import count
 import RPi.GPIO as GPIO
 import time
 
@@ -9,6 +10,7 @@ class Start():
         self.IN2 = 13
         self.PWM = 12
         self.PULSE = 21
+        self.ENCODER = 23
         self.my_lcd = mylcd
 
         GPIO.setmode(GPIO.BOARD)
@@ -16,6 +18,7 @@ class Start():
         GPIO.setup(self.IN2, GPIO.OUT)
         GPIO.setup(self.PWM, GPIO.OUT)
         GPIO.setup(self.PULSE, GPIO.IN)
+        GPIO.setup(self.ENCODER, GPIO.IN)
         GPIO.setwarnings(False)
         self.pwm = GPIO.PWM(self.PWM, 1000)
         self.pwm.start(0)
@@ -25,22 +28,23 @@ class Start():
         self.direction = direction
         self.laps = laps
         self.my_lcd.lcd_clear()
-        bandera = False
+        flag = False
+        count = 0
 
         while self.laps > 0:
+
             if GPIO.input(self.PULSE):
-                bandera = True
-            
-            
-            if bandera:
+                flag = True
+
+            if flag:
                 self.my_lcd.lcd_display_string('PAUSA          ', 1)
                 print('En pausa')
                 GPIO.output(self.IN1, GPIO.LOW)
                 GPIO.output(self.IN2, GPIO.LOW)
-                for i in range(5,0,-1):
+                for i in range(5, 0, -1):
                     self.my_lcd.lcd_display_string(f'Faltan: {i}  ', 2)
                     time.sleep(1)
-                bandera = False
+                flag = False
 
             else:
                 self.my_lcd.lcd_display_string('Corriendo...    ', 1)
@@ -58,7 +62,10 @@ class Start():
                     GPIO.output(self.IN1, GPIO.LOW)
                     GPIO.output(self.IN2, GPIO.HIGH)
                 self.laps -= 1
-                # Simulacion de encoder
+                # ENCODER
+                if GPIO.input(self.ENCODER):
+                    count+=1
+                    print(count)
                 time.sleep(2)
 
         self.pwm.ChangeDutyCycle(0)
