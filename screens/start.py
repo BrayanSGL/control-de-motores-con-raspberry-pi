@@ -31,6 +31,7 @@ class Start():
         while self.laps > 0:
             if self.speed == 10:
                 self.pwm.ChangeDutyCycle(50)
+                time.sleep(0.3)
 
             self.pwm.ChangeDutyCycle(self.speed)
             self.my_lcd.lcd_display_string(f'Quedan: {self.laps}', 2)
