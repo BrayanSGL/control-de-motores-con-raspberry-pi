@@ -1,6 +1,4 @@
-from sre_constants import IN
 import RPi.GPIO as GPIO
-from gpiozero import Button
 import time
 
 
@@ -10,14 +8,14 @@ class Start():
         self.IN1 = 11
         self.IN2 = 13
         self.PWM = 12
-        self.PULSE = 9
+        self.PULSE = 21
         self.my_lcd = mylcd
 
         GPIO.setmode(GPIO.BOARD)
         GPIO.setup(self.IN1, GPIO.OUT)
         GPIO.setup(self.IN2, GPIO.OUT)
         GPIO.setup(self.PWM, GPIO.OUT)
-        #GPIO.setup(self.PULSE, GPIO.IN)
+        GPIO.setup(self.PULSE, GPIO.IN)
         GPIO.setwarnings(False)
         self.pwm = GPIO.PWM(self.PWM, 1000)
         self.pwm.start(0)
@@ -27,11 +25,8 @@ class Start():
         self.direction = direction
         self.laps = laps
         self.my_lcd.lcd_clear()
-        pulse= Button(12)
 
         while self.laps > 0:
-            if pulse.is_pressed():
-                print('Presionado')
             self.my_lcd.lcd_display_string('Corriendo...    ', 1)
             if self.speed == 10:
                 self.pwm.ChangeDutyCycle(50)
