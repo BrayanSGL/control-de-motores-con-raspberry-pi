@@ -25,9 +25,14 @@ class Start():
         self.direction = direction
         self.laps = laps
         self.my_lcd.lcd_clear()
+        bandera = False
 
         while self.laps > 0:
             if GPIO.input(self.PULSE):
+                bandera = True
+            
+            
+            if bandera:
                 self.my_lcd.lcd_display_string('PAUSA', 1)
                 print('En pausa')
                 GPIO.output(self.IN1, GPIO.LOW)
@@ -35,6 +40,7 @@ class Start():
                 for i in range(5,0):
                     self.my_lcd.lcd_display_string(f'Quedan: {i}  ', 2)
                     time.sleep(1)
+                bandera = False
 
             else:
                 self.my_lcd.lcd_display_string('Corriendo...    ', 1)
