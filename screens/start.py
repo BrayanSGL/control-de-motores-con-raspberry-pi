@@ -27,23 +27,29 @@ class Start():
         self.my_lcd.lcd_clear()
 
         while self.laps > 0:
-            self.my_lcd.lcd_display_string('Corriendo...    ', 1)
-            if self.speed == 10:
-                self.pwm.ChangeDutyCycle(50)
-                print('Entra')
-                time.sleep(0.3)
+            if GPIO.input(self.PULSE):
+                self.my_lcd.lcd_display_string('Corriendo...    ', 1)
+                if self.speed == 10:
+                    self.pwm.ChangeDutyCycle(50)
+                    print('Entra')
+                    time.sleep(0.3)
 
-            self.pwm.ChangeDutyCycle(self.speed)
-            self.my_lcd.lcd_display_string(f'Quedan: {self.laps}', 2)
-            if self.direction == 1:
-                GPIO.output(self.IN1, GPIO.HIGH)
-                GPIO.output(self.IN2, GPIO.LOW)
+                self.pwm.ChangeDutyCycle(self.speed)
+                self.my_lcd.lcd_display_string(f'Quedan: {self.laps}', 2)
+                if self.direction == 1:
+                    GPIO.output(self.IN1, GPIO.HIGH)
+                    GPIO.output(self.IN2, GPIO.LOW)
+                else:
+                    GPIO.output(self.IN1, GPIO.LOW)
+                    GPIO.output(self.IN2, GPIO.HIGH)
+                self.laps -= 1
+                # Simulacion de encoder
+                time.sleep(2)
             else:
-                GPIO.output(self.IN1, GPIO.LOW)
-                GPIO.output(self.IN2, GPIO.HIGH)
-            self.laps -= 1
-            # Simulacion de encoder
-            time.sleep(2)
+                self.my_lcd.lcd_display_string('PAUSA', 1)
+                print('En pausa')
+                time.sleep(5)
+
         self.pwm.ChangeDutyCycle(0)
         GPIO.output(self.IN1, GPIO.LOW)
         GPIO.output(self.IN2, GPIO.LOW)
