@@ -63,14 +63,14 @@ class Start():
                     GPIO.output(self.IN2, GPIO.HIGH)
                 #self.laps -= 1
                 # ENCODER
-                if not GPIO.input(self.ENCODER):
-                    count+=1
+                if GPIO.input(self.ENCODER):
+                    count += 1
                     print(count)
                     if count == 20:
                         self.laps -= 1
                         count = 0
-                        
-                #time.sleep(2)
+
+                # time.sleep(2)
 
         self.pwm.ChangeDutyCycle(0)
         GPIO.output(self.IN1, GPIO.LOW)
