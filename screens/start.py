@@ -64,11 +64,11 @@ class Start():
                 #self.laps -= 1
                 # ENCODER
                 if GPIO.input(self.ENCODER):
-                    count += 1
-                    print(count)
-                    if count == 20:
-                        self.laps -= 1
-                        count = 0
+                    #count += 1
+                    # print(count)
+                    # if count == 20:
+                    self.laps -= 1
+                    #   count = 0
 
                 # time.sleep(2)
 
