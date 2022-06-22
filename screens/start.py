@@ -27,10 +27,10 @@ class Start():
         self.direction = direction
         self.laps = laps
         self.my_lcd.lcd_clear()
-        self.pulse= Button(self.PULSE)
+        pulse= Button(self.PULSE)
 
         while self.laps > 0:
-            if self.pulse.is_pressed():
+            if pulse.is_pressed():
                 print('Presionado')
             self.my_lcd.lcd_display_string('Corriendo...    ', 1)
             if self.speed == 10:
